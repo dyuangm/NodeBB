@@ -151,6 +151,7 @@ chatsAPI.update = async (caller, data) => {
 		messaging.getRoomData(data.roomId),
 		user.isAdministrator(caller.uid),
 	]);
+	
 	if (!roomData) {
 		throw new Error('[[error:invalid-data]]');
 	}
