@@ -154,7 +154,7 @@ chatsAPI.update = async (caller, data) => {
 	if (!roomData) {
 		throw new Error('[[error:invalid-data]]');
 	}
-	console.log("Derek Yuan");
+	console.log('Derek Yuan');
 	if (data.hasOwnProperty('groups') && roomData.public && isAdmin) {
 		await db.setObjectField(`chat:room:${data.roomId}`, 'groups', JSON.stringify(data.groups));
 	}
