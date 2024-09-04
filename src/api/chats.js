@@ -154,10 +154,8 @@ chatsAPI.update = async (caller, data) => {
 	if (!roomData) {
 		throw new Error('[[error:invalid-data]]');
 	}
-	if (data.hasOwnProperty('groups')) {
-		if (roomData.public && isAdmin) {
-			await db.setObjectField(`chat:room:${data.roomId}`, 'groups', JSON.stringify(data.groups));
-		}
+	if (data.hasOwnProperty('groups') && roomData.public && isAdmin) {
+		await db.setObjectField(`chat:room:${data.roomId}`, 'groups', JSON.stringify(data.groups));
 	}
 	if (data.hasOwnProperty('notificationSetting') && isAdmin) {
 		await db.setObjectField(`chat:room:${data.roomId}`, 'notificationSetting', data.notificationSetting);
